@@ -51,6 +51,20 @@ public class QuanLySach {
             System.out.println(s.toString());
         }
     } 
+    public void hienThiDanhSachSach(){
+            if(danhSachSach.isEmpty()){
+                System.out.println("Danh sach trong!");
+                return;
+            }
+
+            System.out.println("===================================DANH SACH==================================");
+            System.out.printf("%-10s %-25s %-20s %-10s %-10s\n", 
+                             "MaSach", "TieuDe", "TacGia", "NamXB", "SoLuong");
+            System.out.println("--------------------------------------------------------------------------");
+            for(Sach a: danhSachSach)
+                a.hienThiBang();
+
 
     
+}
 }
