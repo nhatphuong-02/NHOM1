@@ -1,20 +1,36 @@
-package Tuan5;
+import java.util.Scanner;
 
 public class Test {
-   public static void main(String[] args) {
-        Sach sach1=new Sach("001", "HoaHoc", "BGD" ,2024, 100);
-        Sach sach2=new Sach("002", "SinhHoc", "BGD", 2024, 150);
+    public static void main(String[] args) {
+        BookManage list = new BookManage();
+        Scanner sc = new Scanner(System.in);
 
-        sach1.hienThiThongTin();
-        sach2.hienThiThongTin();
+        Textbook tb1 = new Textbook("gt01", "Hinh hoc", "So Giao Duc", 2020 , 20, "Toan hoc", "Dai hoc",30000);
+        System.out.println(tb1.toString());
+        Textbook tb2 = new Textbook("gt02", "Dai so", "So Giao Duc", 2020 , 200, "Toan hoc", "Dai hoc",30000);
+        System.out.println(tb1.toString());
 
-        Sach sach3=new Sach();
-        sach3.setMaSach("003");
-        sach3.setTieuDe("Toan");
-        sach3.setTacGia("BGD");
-        sach3.setNamXuatBan(2024);
-        sach3.setSoLuong(99);
+        Novel nv = new Novel("tt01", "Khong Gia Dinh", "Hector Malot", 1878 , 20, "Van hoc", true,200000);
+        System.out.println(nv.toString());
 
-        sach3.hienThiThongTin();
-   }
+        list.addBook(tb1);
+        list.addBook(tb2);
+        list.addBook(nv);
+        list.addBook();
+        list.displayList();
+
+        list.updateBook();
+        list.displayList();
+
+        list.deleteBook();
+        list.displayList();
+        sc.close();
+
+        Kiemke kiemKe = tb1;
+        System.out.println((kiemKe.kiemTraTonKho(100)?"Co du so luong sach "+tb1.title+" trong kho":"So luong sach "++tb1.title" trong kho khong du"));
+        kiemKe.capNhatViTri("Kho A1-Ke 5");
+
+        System.out.println((tb2.kiemTraTonKho(100)?"Co du so luong sach "+tb22.title+" trong kho":"So luong sach "+tb2.title+" trong kho khong du"));
+        tb2.capNhatViTri("Kho A1-Ke 5");
+    }
 }
