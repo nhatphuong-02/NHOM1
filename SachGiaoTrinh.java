@@ -1,14 +1,14 @@
-public class SachGiaoTrinh extends Sach implements IKiemKe {
+public class SachGiaoTrinh extends Sach {
     private String monHoc;
     private String capDo;
     public SachGiaoTrinh(){
         super();
     }
-    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan){
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);       
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong){
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);       
     }
-    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong,double giaCoBan, String monHoc, String capDo){
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
+    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, String monHoc, String capDo){
+        super(maSach, tieuDe, tacGia, namXuatBan, soLuong);
         this.monHoc = monHoc;
         this.capDo = capDo;
     }
@@ -33,10 +33,6 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
     public int getSoLuong(){
         return super.getSoLuong();
     }
-    @Override
-    public double getGiaCoBan() {
-        return super.getGiaCoBan();
-    }
     public String getMonHoc(){
         return monHoc;
     }
@@ -58,9 +54,6 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
     public void setSoLuong(int soLuong){
         super.setSoLuong(soLuong);
     }
-    public void setGiaCoBan(double giaCoBan) {
-        super.setGiaCoBan(giaCoBan);
-    }
     public void setMonHoc(String monHoc){
         this.monHoc = monHoc;
     }
@@ -72,22 +65,8 @@ public class SachGiaoTrinh extends Sach implements IKiemKe {
         return super.toString()+
         "\nMon hoc: "+monHoc+
         "\nCap do: "+capDo+
-        "\nGia ban: "+giaBan()+
         "\n______________________________________________";
     }
-    @Override
-    public double giaBan(){
-        return(giaCoBan+(2025 - namXuatBan())*5000 );
-    }
-    @Override
-    public boolean kiemTraTonKho(int soLuongToiThieu){
-        return soLuong>=soLuongToiThieu;
-    }
 
-    @Override
-    public void capNhatViTri(String viTriMoi) {
-        System.out.println("Đã chuyển sách "+getTieuDe()+" đến khu vực: "+viTriMoi);
-    }
     
-
 }
