@@ -10,30 +10,80 @@ public class BookManage {
         ar.add(b);
     }
     public void addBook(){
-        Book b = new Book();
+        System.out.print("Ban muon them sach giao trinh hay sach tieu thuyet: ");
+        String input = sc.nextLine().trim();
 
-        System.out.print("Nhap ma sach: ");
-        b.bookId = sc.nextLine().trim();
-        for(Book a : ar)
-            if(a.bookId.equalsIgnoreCase(b.bookId)){
-                System.out.println("Ma sach da ton tai!");
-                return;
-            }
+        if(input.equalsIgnoreCase("giao trinh")){
+            Textbook b = new Textbook();
+            System.out.print("Nhap ma sach: ");
+            b.bookId = sc.nextLine().trim();
+            for(Book a : ar)
+                if(a.bookId.equalsIgnoreCase(b.bookId)){
+                    System.out.println("Ma sach da ton tai!");
+                    return;
+                }
 
-        System.out.print("Nhap tieu de: ");
-        b.title = sc.nextLine();
+            System.out.print("Nhap tieu de: ");
+            b.title = sc.nextLine();
 
-        System.out.print("Nhap tac gia: ");
-        b.author = sc.nextLine();
+            System.out.print("Nhap tac gia: ");
+            b.author = sc.nextLine();
 
-        System.out.print("Nhap nam xuat ban: ");
-        b.publicationYear = Integer.parseInt(sc.nextLine());
-        
-        System.out.print("Nhap so luong: ");
-        b.quantity = Integer.parseInt(sc.nextLine());
-        ar.add(b);
+            System.out.print("Nhap nam xuat ban: ");
+            b.publicationYear = Integer.parseInt(sc.nextLine());
+            
+            System.out.print("Nhap so luong: ");
+            b.quantity = Integer.parseInt(sc.nextLine());
 
-        System.out.println("Them sach thanh cong!");
+            System.out.print("Nhap gia co ban: ");
+            b.giaCoBan = Double.parseDouble(sc.nextLine());
+
+            System.out.print("Nhap mon hoc: ");
+            b.setSubject(sc.nextLine());
+
+            System.out.print("Nhap cap do: ");
+            b.setLevel(sc.nextLine());
+
+            ar.add(b);
+
+            System.out.println("Them sach thanh cong!");
+        }
+
+        if(input.equalsIgnoreCase("tieu thuyet")){
+            Novel b = new Novel();
+            System.out.print("Nhap ma sach: ");
+            b.bookId = sc.nextLine().trim();
+            for(Book a : ar)
+                if(a.bookId.equalsIgnoreCase(b.bookId)){
+                    System.out.println("Ma sach da ton tai!");
+                    return;
+                }
+
+            System.out.print("Nhap tieu de: ");
+            b.title = sc.nextLine();
+
+            System.out.print("Nhap tac gia: ");
+            b.author = sc.nextLine();
+
+            System.out.print("Nhap nam xuat ban: ");
+            b.publicationYear = Integer.parseInt(sc.nextLine());
+            
+            System.out.print("Nhap so luong: ");
+            b.quantity = Integer.parseInt(sc.nextLine());
+
+            System.out.print("Nhap gia co ban: ");
+            b.giaCoBan = Double.parseDouble(sc.nextLine());
+
+            System.out.print("Nhap the loai: ");
+            b.setGenre(sc.nextLine());
+
+            System.out.print("Co phai la sach dai ky khong(true/false): ");
+            b.setSeries(Boolean.parseBoolean(sc.nextLine()));
+            
+            ar.add(b);
+
+            System.out.println("Them sach thanh cong!");
+        }
     }
 
     //Xóa
@@ -41,7 +91,7 @@ public class BookManage {
         ar.remove(b);
     }
     public void deleteBook(){
-        System.out.print("Nhap ma sach muon xoa: ");
+        System.out.print("\nNhap ma sach muon xoa: ");
         String deleteId = sc.nextLine().trim();
 
         boolean removed = ar.removeIf(a->a.bookId.equalsIgnoreCase(deleteId));
@@ -53,7 +103,7 @@ public class BookManage {
 
     //Cập nhật
     public void updateBook(){
-        System.out.print("Nhap ma sach can cap nhat: ");
+        System.out.print("\nNhap ma sach can cap nhat: ");
         String updateId = sc.nextLine().trim();
 
         for (Book a : ar)
@@ -80,11 +130,11 @@ public class BookManage {
 
         //Tìm kiếm theo mã sách
         public void searchBook(){
-            System.out.print("Nhap ma sach can tim: ");
-            String updateId = sc.nextLine().trim();
+            System.out.print("\nNhap ma sach can tim: ");
+            String searchId = sc.nextLine().trim();
 
             for(Book a : ar)
-                if(a.bookId.equalsIgnoreCase(updateId)){
+                if(a.bookId.equalsIgnoreCase(searchId)){
                     System.out.println("Thong tin sach can tim");
                     a.displayInfo();
                     return;
@@ -100,10 +150,10 @@ public class BookManage {
                 return;
             }
 
-            System.out.println("===================================DANH SACH==================================");
-            System.out.printf("%-10s %-25s %-20s %-10s %-10s\n", 
-                             "MaSach", "TieuDe", "TacGia", "NamXB", "SoLuong");
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println("======================================DANH SACH=========================================");
+            System.out.printf("%-10s %-25s %-20s %-10s %-10s %-20s\n", 
+                             "MaSach", "TieuDe", "TacGia", "NamXB", "SoLuong", "Gia ban uoc tinh(VND)");
+            System.out.println("------------------------------------------------------------------------------------------------------");
             for(Book a: ar)
                 a.displayTable();
         }

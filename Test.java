@@ -3,41 +3,34 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
         BookManage list = new BookManage();
-        Book b = new Book("s01", "Khong Gia Dinh", "Hector Malot", 1878 , 20);
         Scanner sc = new Scanner(System.in);
-        b.displayInfo();
 
-        Book b1 = new Book();
-        System.out.print("Nhap ma sach: ");
-        b1.setBookId(sc.nextLine());
-        System.out.print("Nhap tieu de sach: ");
-        b1.setTitle(sc.nextLine());
-        System.out.print("Nhap ten tac gia: ");
-        b1.setAuthor(sc.nextLine());
-        System.out.print("Nhap nam xuat ban: ");
-        b1.setPublicationYear(Integer.parseInt(sc.nextLine()));
-        System.out.print("Nhap so luong sach: ");
-        b1.setQuantity(Integer.parseInt(sc.nextLine()));
-        b1.displayInfo();
+        Textbook tb1 = new Textbook("gt01", "Hinh hoc", "So Giao Duc", 2020 , 20, "Toan hoc", "Dai hoc",30000);
+        System.out.println(tb1.toString());
+        Textbook tb2 = new Textbook("gt01", "Dai so", "So Giao Duc", 2020 , 200, "Toan hoc", "Dai hoc",30000);
+        System.out.println(tb1.toString());
 
-        Textbook tb = new Textbook("s03", "Toan hoc", "So Giao Duc", 1878 , 20, "Van hoc", "Dai hoc");
-        System.out.println(tb.toString());
+        Novel nv = new Novel("tt01", "Khong Gia Dinh", "Hector Malot", 1878 , 20, "Van hoc", true,200000);
+        System.out.println(nv.toString());
 
-        Novel n = new Novel("s04", "Khong Gia Dinh", "Hector Malot", 1878 , 20, "Van hoc", true);
-        System.out.println(n.toString());
-
-        list.addBook(b);
-        list.addBook(b1);
-        list.addBook(tb);
-        list.addBook(n);
-        list.addBook();
+        list.addBook(tb1);
+        list.addBook(tb2);
+        list.addBook(nv);
+        // list.addBook();
         list.displayList();
 
-        list.updateBook();
-        list.displayList();
+        // list.updateBook();
+        // list.displayList();
 
         list.deleteBook();
         list.displayList();
         sc.close();
+
+        Kiemke kiemKe = tb1;
+        System.out.println((kiemKe.kiemTraTonKho(100)?"Co du so luong trong kho":"So luong trong kho khong du"));
+        kiemKe.capNhatViTri("Kho A1-Ke 5");
+
+        System.out.println((tb2.kiemTraTonKho(100)?"Co du so luong trong kho":"So luong trong kho khong du"));
+        tb2.capNhatViTri("Kho A1-Ke 5");
     }
 }

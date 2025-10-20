@@ -1,17 +1,19 @@
-public class Book{
+public abstract class Book implements Kiemke{
     protected String bookId;
     protected String title;
     protected String author;
     protected int publicationYear;
     protected int quantity;
+    protected double giaCoBan;
 
     //Constructor
-    public Book(String bookId, String title, String author, int publicationYear, int quantity){
+    public Book(String bookId, String title, String author, int publicationYear, int quantity, double giaCoBan){
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.quantity = quantity;
+        this.giaCoBan = giaCoBan;
     }
     public Book(String bookId, String title){
         this.bookId = bookId;
@@ -26,6 +28,9 @@ public class Book{
     public Book() {
     }
     //Getter
+    public double getGiaCoBan() {
+        return giaCoBan;
+    }
     public String getAuthor() {
         return author;
     }
@@ -43,6 +48,9 @@ public class Book{
     }
 
     //Setter
+    public void setGiaCoBan(double giaCoBan) {
+        this.giaCoBan = giaCoBan;
+    }
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -71,10 +79,8 @@ public class Book{
     }
 
 
-    public void displayTable(){
-        System.out.printf("%-10s %-25s %-20s %-10d %-10d\n",
-                            bookId, title, author, publicationYear, quantity);
-    }
+    public abstract void displayTable();
+
 
     @Override
     public String toString() {
@@ -84,4 +90,6 @@ public class Book{
                 "\nNam xuat ban  :  "+publicationYear+
                 "\nSo luong      : "+quantity;
     }
+
+    public abstract double cost();
 }
