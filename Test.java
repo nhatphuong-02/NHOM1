@@ -1,95 +1,53 @@
 public class Test {
-   public static void main(String[] args) {
-        Sach sach1=new Sach("001", "HoaHoc", "BGD" ,2024, 100);
-        Sach sach2=new Sach("002", "SinhHoc", "BGD", 2024, 150);
-
-        sach1.hienThiThongTin();
-        sach2.hienThiThongTin();
-
-        Sach sach3=new Sach();
-        sach3.setMaSach("003");
-        sach3.setTieuDe("Toan");
-        sach3.setTacGia("BGD");
-        sach3.setNamXuatBan(2024);
-        sach3.setSoLuong(99);
-
-        sach3.hienThiThongTin();
-
-        SachGiaoTrinh sachGT1=new SachGiaoTrinh("004", "Ly", "BGD  ", 2024, 199, "Vat ly", "THPT");
-        System.out.println(sachGT1.toString());
-
-        SachTieuThuyet sachTT1=new SachTieuThuyet("005", "TruyenKieu", "NguyenDu", 2023, 50, "Co trang", false);
-        System.out.println(sachTT1.toString());
-
-        QuanLySach qlSach=new QuanLySach();
-        System.out.println("Danh sach khi chua them sach:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-
-        qlSach.themSach(sach1);
-        qlSach.themSach(sach2);
-        System.out.println("Danh sach khi them sach:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-
-        System.out.println("Danh sach sau khi xoa sach co ma 002:");
-        qlSach.xoaSach("002");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-
-        System.out.println("Tim kiem sach co ma 001:");
-        Sach maCanTim = new Sach();
-        maCanTim.setMaSach("001");
-        Sach ketQua=qlSach.timKiemSach(maCanTim.getMaSach());
-        if (ketQua != null) {
-                System.out.println("Tim thay sach co ma sach "+maCanTim.getMaSach()+"\n" + ketQua);
-            } else {
-                System.out.println("Khong tim thay sach co ma: " + maCanTim);
-            }
-        System.out.println("-------------------");
-        
-        
-        System.out.println("Tim kiem sach co ma 002:");
-        Sach maCanTim2 = new Sach();
-        maCanTim2.setMaSach("002");
-        Sach ketQua2=qlSach.timKiemSach(maCanTim2.getMaSach());
-        if (ketQua2 != null) {
-                System.out.println("Tim thay sach co ma sach "+maCanTim2.getMaSach()+"\n" + ketQua);
-            } else {
-                System.out.println("Khong tim thay sach co ma: " + maCanTim2.getMaSach());
-            }
-        System.out.println("-------------------");
-
-        System.out.println("Danh sach truoc khi cap nhat:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");  
-        System.out.println("Cap nhat tieu de sach co ma 001 thanh 'HoaHoc1':");
-        qlSach.capNhatTieuDe("001", "HoaHoc1");
-        qlSach.hienThiDanhSachSach();  
-        System.out.println("-------------------");
-
-        System.out.println("Danh sach truoc khi cap nhat:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-        System.out.println("Cap nhat tac gia sach co ma 001 thanh 'BGD1':");
-        qlSach.capNhatTacGIa("001", "BGD1");
-        qlSach.hienThiDanhSachSach();  
-        System.out.println("-------------------");
-
-        System.out.println("Danh sach truoc khi cap nhat:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-        System.out.println("Cap nhat nam xuat ban sach co ma 001 thanh 2025:");
-        qlSach.capNhatNamXuatBan("001", 2025);
-        qlSach.hienThiDanhSachSach();  
-        System.out.println("-------------------");
-
-        System.out.println("Danh sach truoc khi cap nhat:");
-        qlSach.hienThiDanhSachSach();
-        System.out.println("-------------------");
-        System.out.println("Cap nhat so luong sach co ma 001 thanh 200:");
-        qlSach.capNhatSoLuong("001", 200);
-        qlSach.hienThiDanhSachSach();  
-        System.out.println("-------------------");
-    }
+    public static void main(String[] args) {
+        QuanLySach quanLy = new QuanLySach();
+        /* 
+        Sach sach1 = new sach("S001", "Lap trinh co ban", "Pham Thanh A", 2023, 10);
+        Sach sach2 = new Sach("S002", "Cau truc du lieu va giai thuat", "Pham Thanh B", 2022, 5);
+        SachGiaoTrinh sach3 = new SachGiaoTrinh();
+        sach3.setMaSach("001");
+        sach3.setTieuDe("Co nan");
+        sach3.setTacGia("Pham Thanh Tien");
+        sach3.setNamXuatBan(2006);
+        sach3.setSoLuong(1);
+        sach3.setmonHoc("toan");
+        sach3.setcapDo("3");
+        SachTieuThuyet sach4=new SachTieuThuyet("001", "Sach giao khoa", "Tien bịp",2006,2,"sgv",true,20000);
+        quanLy.themSach(sach1);
+        quanLy.themSach(sach2);
+        quanLy.themSach(sach3);
+        quanLy.themSach(sach4);
+        quanLy.hienThiDanhSachSach();
+         String maCanTim = "TT01";
+        Sach timThay = quanLy.timKiemTheoMa(maCanTim);
+        if (timThay != null) {
+            System.out.println("Đã tìm thấy: " + timThay.getTieuDe());
+            System.out.println(timThay.toString());
+        } else {
+            System.out.println("Khong tim thay sach voi ma sach: " + maCanTim);
+        }
+         System.out.println("\n--- 4. CAP NHAT MA SACH (Ma GT01) ---");
+        String maCanCapNhat = "001";
+        quanLy.capNhatSach(maCanCapNhat);
+        System.out.println("\n--- 5. DANH SACH SAU KHI CAP NHAT ---");
+        quanLy.hienThiDanhSachSach();
+        System.out.println("\n--- 6. XOA SACH (Ma S001) ---");
+        String maCanXoa = "S001";
+        quanLy.xoaSach(maCanXoa);
+        quanLy.xoaSach("MAKHONGTONTAI"); 
+        System.out.println("\n--- 7. DANH SACH CUOI CUNG ---");
+        quanLy.hienThiDanhSachSach();
+        */
+        SachTieuThuyet ptt1=new SachTieuThuyet("001","sach giao khoa","cothay",2006,10,"sach giao khoa",true,10000);
+        quanLy.themSach(ptt1);
+        System.out.println("\nDanh sach sau khi them sach");
+        quanLy.hienThiDanhSachSach();
+        System.out.println("\nKiem tra so luong ton kho của ma sach "+ptt1.getMaSach()+":"+(ptt1.kiemTraTonKho(1)?" Đu so luong":" Kongdusoluong"));
+        ptt1.capNhatViTri("Kho A1 KE 10");
+        SachGiaoTrinh ptt2=new SachGiaoTrinh("002","sach giao khoa","tien bip",2005,3,"toan","3",15000);
+        quanLy.themSach(ptt2);
+        System.out.println("\nDanh sach sau khi them sach");
+        System.out.println("\nKiem tra so luong ton kho của ma sach "+ptt2.getMaSach()+":"+(ptt2.kiemTraTonKho(1)?" Đu so luong":" Kongdusoluong"));
+        ptt2.capNhatViTri("Kho A3 KE 10");
+    }   
 }
