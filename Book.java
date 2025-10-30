@@ -96,11 +96,11 @@ public abstract class Book implements IKiemke, IGiaBan{
     //Hàm hiển thị thông tin
     public void displayInfo() {
         System.out.println("--------- THONG TIN CHI TIET---------");
-        System.out.println("Ma sach       : " + bookId);
-        System.out.println("Tieu de        : " + title);
-        System.out.println("Tac gia       : " + author);
-        System.out.println("Nam xuat ban  : " + publicationYear);
-        System.out.println("So luong      : " + quantity);
+        System.out.println("Ma sach       : " + this.bookId);
+        System.out.println("Tieu de        : " + this.title);
+        System.out.println("Tac gia       : " + this.author);
+        System.out.println("Nam xuat ban  : " + this.publicationYear);
+        System.out.println("So luong      : " + this.quantity);
         System.out.println("--------------------------------------");
     }
 
@@ -111,11 +111,11 @@ public abstract class Book implements IKiemke, IGiaBan{
     //Hàm xuất
     @Override
     public String toString() {
-        return  "--------- THONG TIN CHI TIET---------\nMa sach       : "+bookId+
-                "\nTieu de       : "+title+
-                "\nTac gia       : "+author+
-                "\nNam xuat ban  :  "+publicationYear+
-                "\nSo luong      : "+quantity;
+        return  "--------- THONG TIN CHI TIET---------\nMa sach       : "+this.bookId+
+                "\nTieu de       : "+this.title+
+                "\nTac gia       : "+this.author+
+                "\nNam xuat ban  :  "+this.publicationYear+
+                "\nSo luong      : "+this.quantity;
     }
 
 }

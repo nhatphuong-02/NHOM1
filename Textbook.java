@@ -28,23 +28,32 @@ public class Textbook extends Book {
         return level;
     }
     
+    //Nhap
+    public void Input(){
+        super.Input();
+        System.out.print("Nhap mon hoc: ");
+        this.subject = sc.nextLine();
+
+        System.out.print("Nhap cap do: ");
+        this.level = sc.nextLine();
+    }
     //Xuat
     @Override
     public String toString() {
-        return super.toString() +"\nMon hoc       : "+subject+"\nCap do        : "+level+"\nGia ban       : "+cost()+"\n";
+        return super.toString() +"\nMon hoc       : "+this.subject+"\nCap do        : "+this.level+"\nGia ban       : "+this.cost()+"\n";
     }
 
     //Tính giá bán
     @Override
     public double cost() {
-        return giaCoBan+(2025-publicationYear)*5000;
+        return this.giaCoBan+(2025-this.publicationYear)*5000;
     }
 
     //Hàm hiển thị dưới dạng bảng
     @Override
     public void displayTable(){
         System.out.printf("%-10s %-25s %-20s %-10d %-10d %-20.2f\n",
-                        bookId, title, author, publicationYear, quantity,cost());
+                        this.bookId, this.title, this.author, this.publicationYear, this.quantity, this.cost());
     }
 
     //Kiểm tra tồn kho
@@ -62,6 +71,6 @@ public class Textbook extends Book {
     //Tính giá bán
     @Override
     public double tinhGiaBan(){
-        return cost();
+        return this.cost();
     }
 }

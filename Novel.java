@@ -34,26 +34,27 @@ public class Novel extends Book {
         System.out.print("Nhap the loai: ");
         this.genre = sc.nextLine();
 
-        System.out.print("Co phai ");
+        System.out.print("Co phai thuoc the loai dai ky khong(true/false): ");
+        this.isSeries = Boolean.getBoolean(sc.nextLine());
     }
 
     //Hàm xuất
     @Override
     public String toString() {
-        return super.toString() +"\nThe loai      : "+genre+"\n"+(isSeries?"Thuoc the loai series":"Khong thuoc the loai series")+"\nGia ban       : "+cost()+"\n";
+        return super.toString() +"\nThe loai      : "+this.genre+"\n"+(this.isSeries?"Thuoc the loai series":"Khong thuoc the loai series")+"\nGia ban       : "+cost()+"\n";
     }
 
     //Hàm tính giá bán
     @Override
     public double cost(){
-        return (isSeries? giaCoBan+15000: giaCoBan);
+        return (this.isSeries? this.giaCoBan+15000: this.giaCoBan);
     }
 
     //Hàm xuất dạng bảng
     @Override
     public void displayTable(){
         System.out.printf("%-10s %-25s %-20s %-10d %-10d %-20.2f\n",
-                        bookId, title, author, publicationYear, quantity,cost());
+                        this.bookId, this.title, this.author, this.publicationYear, this.quantity, this.cost());
     }
 
     //Kiểm tra số lượng tồn kho
@@ -71,6 +72,6 @@ public class Novel extends Book {
     //Hàm tính giá bán
     @Override
     public double tinhGiaBan(){
-        return cost();
+        return this.cost();
     }
 }
