@@ -1,10 +1,15 @@
-public abstract class Book implements Kiemke{
+package task.TUAN5;
+
+import java.util.Scanner;
+
+public abstract class Book implements IKiemke, IGiaBan{
     protected String bookId;
     protected String title;
     protected String author;
     protected int publicationYear;
     protected int quantity;
     protected double giaCoBan;
+    protected Scanner sc = new Scanner(System.in);
 
     //Constructor
     public Book(String bookId, String title, String author, int publicationYear, int quantity, double giaCoBan){
@@ -24,10 +29,10 @@ public abstract class Book implements Kiemke{
         this.author = author;
         this.quantity = quantity;
     }
-
     public Book() {
     }
-    //Getter
+
+    //Get
     public double getGiaCoBan() {
         return giaCoBan;
     }
@@ -47,7 +52,7 @@ public abstract class Book implements Kiemke{
         return title;
     }
 
-    //Setter
+    //Set
     public void setGiaCoBan(double giaCoBan) {
         this.giaCoBan = giaCoBan;
     }
@@ -67,6 +72,27 @@ public abstract class Book implements Kiemke{
         this.title = title;
     }
 
+    //Hàm nhập
+    public void Input(){
+        System.out.print("Nhap ma sach: ");
+        this.bookId = sc.nextLine();
+
+        System.out.print("Nhap tieu de: ");
+        this.title = sc.nextLine();
+
+        System.out.print("Nhap tac gia: ");
+        this.author = sc.nextLine();
+
+        System.out.print("Nhap nam xuat ban: ");
+        this.publicationYear = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Nhap so luong: ");
+        this.quantity = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Nhap gia co ban: ");
+        this.giaCoBan = Integer.parseInt(sc.nextLine());
+    }
+
     //Hàm hiển thị thông tin
     public void displayInfo() {
         System.out.println("--------- THONG TIN CHI TIET---------");
@@ -78,10 +104,11 @@ public abstract class Book implements Kiemke{
         System.out.println("--------------------------------------");
     }
 
-
+    //Các hàm trừ tượng
     public abstract void displayTable();
+    public abstract double cost();
 
-
+    //Hàm xuất
     @Override
     public String toString() {
         return  "--------- THONG TIN CHI TIET---------\nMa sach       : "+bookId+
@@ -91,5 +118,4 @@ public abstract class Book implements Kiemke{
                 "\nSo luong      : "+quantity;
     }
 
-    public abstract double cost();
 }
