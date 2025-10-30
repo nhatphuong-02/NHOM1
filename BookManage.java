@@ -1,13 +1,28 @@
+package task.TUAN5;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BookManage {
-    protected ArrayList<Book> ar = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+public class BookManage implements IQuanLySach {
+    private ArrayList<Book> ar;
+    private Scanner sc;
+
+    public BookManage(){
+        ar = new ArrayList<>();
+        sc = new Scanner(System.in);
+    }
 
     //Thêm mới
     public void addBook(Book b){
-        ar.add(b);
+        for(Book a : ar)
+            if(a.bookId.equals(b.bookId)){
+                System.out.println("Ma sach "+b.bookId+" da ton tai!\n");
+                return;
+            }
+            else{
+                ar.add(b);
+                System.out.println("Da them thanh cong sach co ma "+b.bookId+"\n");
+            }
     }
     public void addBook(){
         System.out.print("Ban muon them sach giao trinh hay sach tieu thuyet: ");
@@ -117,44 +132,44 @@ public class BookManage {
 
                 System.out.print("Nam xuat ban: ");
                 a.publicationYear = Integer.parseInt(sc.nextLine());
+
                 System.out.print("So luong: ");
-
                 a.quantity = Integer.parseInt(sc.nextLine());
-                System.out.println("Cap nhat thanh cong!");
 
+                System.out.println("Cap nhat thanh cong!");
                 return;
             }
 
         System.out.println("Khong tim thay sach co ma: " + updateId);
 }
 
-        //Tìm kiếm theo mã sách
-        public void searchBook(){
-            System.out.print("\nNhap ma sach can tim: ");
-            String searchId = sc.nextLine().trim();
+    //Tìm kiếm theo mã sách
+    public void searchBook(){
+        System.out.print("\nNhap ma sach can tim: ");
+        String searchId = sc.nextLine().trim();
 
-            for(Book a : ar)
-                if(a.bookId.equalsIgnoreCase(searchId)){
-                    System.out.println("Thong tin sach can tim");
-                    a.displayInfo();
-                    return;
-                }
-
-            System.out.println("Khong tim thay ket qua phu hop!");
-        }
-
-        //Hiển thị danh sách sách
-        public void displayList(){
-            if(ar.isEmpty()){
-                System.out.println("Danh sach trong!");
+        for(Book a : ar)
+            if(a.bookId.equalsIgnoreCase(searchId)){
+                System.out.println("Thong tin sach can tim");
+                a.displayInfo();
                 return;
             }
 
-            System.out.println("======================================DANH SACH=========================================");
-            System.out.printf("%-10s %-25s %-20s %-10s %-10s %-20s\n", 
-                             "MaSach", "TieuDe", "TacGia", "NamXB", "SoLuong", "Gia ban uoc tinh(VND)");
-            System.out.println("------------------------------------------------------------------------------------------------------");
-            for(Book a: ar)
-                a.displayTable();
+        System.out.println("Khong tim thay ket qua phu hop!");
+    }
+
+    //Hiển thị danh sách sách
+    public void displayList(){
+        if(ar.isEmpty()){
+            System.out.println("Danh sach trong!");
+            return;
         }
+
+        System.out.println("======================================DANH SACH=========================================");
+        System.out.printf("%-10s %-25s %-20s %-10s %-10s %-20s\n", 
+                            "MaSach", "TieuDe", "TacGia", "NamXB", "SoLuong", "Gia ban uoc tinh(VND)");
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        for(Book a: ar)
+            a.displayTable();
+    }
 }

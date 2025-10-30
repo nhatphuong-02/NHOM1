@@ -1,8 +1,10 @@
+package task.TUAN5;
+
 import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        BookManage list = new BookManage();
+        IQuanLySach list = new BookManage();
         Scanner sc = new Scanner(System.in);
 
         Textbook tb1 = new Textbook("gt01", "Hinh hoc", "So Giao Duc", 2020 , 20, "Toan hoc", "Dai hoc",30000);
@@ -26,11 +28,13 @@ public class Test {
         list.displayList();
         sc.close();
 
-        Kiemke kiemKe = tb1;
-        System.out.println((kiemKe.kiemTraTonKho(100)?"Co du so luong sach "+tb1.title+" trong kho":"So luong sach "++tb1.title" trong kho khong du"));
+        IKiemke kiemKe = tb1;
+        System.out.println((kiemKe.kiemTraTonKho(100)?"Co du so luong sach "+tb1.title+" trong kho":"So luong sach "+tb1.title+" trong kho khong du"));
         kiemKe.capNhatViTri("Kho A1-Ke 5");
 
-        System.out.println((tb2.kiemTraTonKho(100)?"Co du so luong sach "+tb22.title+" trong kho":"So luong sach "+tb2.title+" trong kho khong du"));
+        System.out.println((tb2.kiemTraTonKho(100)?"Co du so luong sach "+tb2.title+" trong kho":"So luong sach "+tb2.title+" trong kho khong du"));
         tb2.capNhatViTri("Kho A1-Ke 5");
+
+        
     }
 }
